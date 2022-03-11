@@ -17,21 +17,50 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: '首页'
+      title: '首页',
+      icon: 'md-home'
     }
   },
   {
-    path: '/about',
-    name: 'About',
+    path: '/inform',
+    name: 'Inform',
     component: () => import('../views/About.vue'),
     meta: {
-      title: '关于'
+      title: '公告',
+      icon: 'md-clipboard'
+    }
+  },
+  {
+    path: '/message',
+    name: 'Message',
+    component: () => import('../views/About.vue'),
+    meta: {
+      title: '反馈',
+      icon: 'md-bulb'
+    }
+  },
+  {
+    path: '/my',
+    name: 'My',
+    component: () => import('../views/About.vue'),
+    meta: {
+      title: '个人中心',
+      icon: 'md-contact'
     }
   }
 ]
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  // ...
+  // 返回 false 以取消导航
+  console.log(to);
+  console.log(from);
+  next()
+  return false
 })
 
 export default router
