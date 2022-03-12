@@ -6,7 +6,7 @@ export default {
             api: {},
             params: {
                 cur: 1,
-                size: 10
+                size: 10,
             }
         }
     },

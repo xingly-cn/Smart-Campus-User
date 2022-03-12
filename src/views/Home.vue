@@ -3,8 +3,11 @@
     <div style="background: #eee; padding: 20px;opacity:.8">
       <div class="grid-2">
         <Input  placeholder="请输入名称" @on-keyup.enter="handleSearch"></Input>
-      <Select v-model="model8" clearable  placeholder="分类筛选">
-        <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+      <Select v-model="category" clearable  
+      placeholder="分类筛选"
+      @on-clear="onclear"
+      @on-query-change="findCategory(category)">
+        <Option v-for="item in cityList" :value="item.id" :key="item.id">{{ item.name }}</Option>
       </Select>
       </div>
       <div class="grid-2">
@@ -21,12 +24,10 @@
               size="100"
               shape="square"
             />
-
-            
-            <!-- <div slot="extra"> -->
-              <!-- 123 -->
-            <!-- </div> -->
-            <div style="margin-left: 20px"><p>这里是内容</p></div>
+            <div style="margin-left: 20px">
+              <!-- TODO太长导致图片被压缩 -->
+              {{item.content}}
+            </div>
           </div>
           <div
             class="flex-end"
@@ -38,11 +39,11 @@
       </div>
       <Page
         :total="total"
-        :current.sync="params.cur"
-        :page-size.sync="params.size"
-        :page-size-opts="[2, 10, 20, 100]"
-        @on-change="getList"
-        @on-page-size-change="getList"
+        :current.sync="pages.cur"
+        :page-size.sync="pages.size"
+        :page-size-opts="[10, 20, 100]"
+        @on-change="getGoodList"
+        @on-page-size-change="getGoodList"
         show-elevator
         show-sizer
         show-total
@@ -67,13 +68,17 @@ import useRequest from "@/mixins/useRequest";
 export default {
   mixins: [useRequest],
   mounted() {
-    this.getList();
+    this.getGoodList();
+    this.handleCategory();
   },
   data() {
     return {
-      api: Object.freeze({
-        list: good.getGoodList,
-      }),
+      pages: {
+        cur: 1,
+        size: 10,
+        categoryId: ''
+      },
+      list: [],
       good: {
         title: "新增",
         show: false,
@@ -81,6 +86,7 @@ export default {
         rules: {},
         loading: false,
       },
+      cityList: []
     };
   },
   methods: {
@@ -92,6 +98,26 @@ export default {
     },
     handleSearch() {
       this.$Message.error('123')
+    },
+    handleCategory() {
+      good.getCategoryList().then(res => {
+        this.cityList = res.data.list
+      })
+    },
+    onclear() {
+      this.pages.categoryId = ''
+      this.getGoodList()
+    },
+    findCategory(id) {
+      this.$Message.success("筛选分类成功")
+      this.pages.categoryId = id
+      this.getGoodList()
+    },
+    getGoodList() {
+      good.getGoodList({cur:this.pages.cur,size:10,categoryId:this.pages.categoryId}).then(res => {
+        this.list = res.data.list
+        this.total = res.data.total
+      })
     }
   },
 };

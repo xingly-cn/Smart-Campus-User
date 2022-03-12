@@ -29,3 +29,9 @@ export const delGoof = (params) => service.request({
     methods: "POST", 
     params
 })
+
+// 分类
+export const getCategoryList = () => service.request({
+    url: '/lost/category/getList', 
+    methods: "GET", 
+})
