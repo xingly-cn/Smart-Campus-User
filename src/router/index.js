@@ -31,9 +31,9 @@ const routes = [
     }
   },
   {
-    path: '/message',
-    name: 'Message',
-    component: () => import('../views/About.vue'),
+    path: '/callback',
+    name: 'Callback',
+    component: () => import('../views/Callback.vue'),
     meta: {
       title: '反馈',
       icon: 'md-bulb'

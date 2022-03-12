@@ -6,7 +6,7 @@ const service = axios.create({
     baseURL: '/api',
     // 定义统一的请求头部
     headers: {
-       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+       "Content-Type": "application/json;charset=UTF-8"
     },
     // 配置请求超时时间
     timeout: 10000, 
