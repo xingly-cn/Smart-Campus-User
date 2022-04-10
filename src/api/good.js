@@ -6,10 +6,10 @@ export const getGoodList = (params) => service.request({
     params
 })
 
-export const getGoodInfo = (params) => service.request({
+export const getGoodInfo = (id) => service.request({
     url: '/lost/good/getInfo', 
     method: "GET", 
-    params
+    params: { goodId: id }
 })
 
 export const goofFind = (params) => service.request({
@@ -42,4 +42,11 @@ export const addBack = (params) => service.request({
     url: '/lost/callback/add', 
     method: "POST", 
     data: params
+})
+
+
+export const informList = (params) => service.request({
+    url: '/lost/inform/getList', 
+    method: "GET", 
+    params
 })

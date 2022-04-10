@@ -1,0 +1,81 @@
+::-webkit-scrollbar {
+	width: 0;
+	scrollbar-width: none; /* firefox */
+	-ms-overflow-style: none; /* IE 10+ */
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.body::-webkit-scrollbar {
+	/*滚动条整体样式*/
+	width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+}
+.body::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background: #fff;
+}
+.body::-webkit-scrollbar-track {
+	background: #ad6598;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+}
+
+.flex-end {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.flex-around {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.flex-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.p-10 {
+	padding: 10px;
+}
+
+.pl-10 {
+	padding-left: 10px;
+}
+
+.pr-10 {
+	padding-right: 10px;
+}
+
+.pd-10 {
+	padding-bottom: 10px;
+}
+
+.pt-10 {
+	padding-top: 10px;
+}
+
+.m-10 {
+	margin: 10px;
+}
+
+.ml-10 {
+	margin-left: 10px;
+}
+
+.mr-10 {
+	margin-right: 10px;
+}
+
+.mb-10 {
+	margin-bottom: 10px;
+}
+
+.mt-10 {
+	margin-top: 10px;
+}
