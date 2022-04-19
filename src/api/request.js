@@ -19,6 +19,7 @@ const service = axios.create({
 service.interceptors.request.use(config => {
     // 自定义header，可添加项目token
     config.headers.token = localStorage.getItem('token') || '';
+    config.headers.stuId = localStorage.getItem('stuId') || '4';
     return config;
 });
 // 返回拦截

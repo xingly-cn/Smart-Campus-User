@@ -1,5 +1,5 @@
 <template>
-	<div class="home">
+	<div class="home pt-10">
 		<div style="background: #eee; padding: 20px; opacity: 0.8">
 			<div class="grid-2">
 				<Input placeholder="请输入名称" v-model="pages.keyword" @on-keyup.enter="handleSearch"></Input>
@@ -23,9 +23,7 @@
 						</div>
 					</div>
 					<div class="flex-between mt-10 p-10" style="border-top: 1px solid #ccc">
-						<Tag checkable :color="['error', 'success'][item.tags]">{{
-							['未找到', '找到'][item.tags]
-						}}</Tag>
+						<Tag :color="['error', 'success'][item.tags]">{{ ['未找到', '找到'][item.tags] }}</Tag>
 						<div>
 							<Button type="text" @click="handleChat(item)">联系</Button>
 							<Button type="text" @click="handleDetail(item)">详情</Button>

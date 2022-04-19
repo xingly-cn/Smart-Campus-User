@@ -42,7 +42,7 @@ const routes = [
   {
     path: '/my',
     name: 'My',
-    component: () => import('../views/About.vue'),
+    component: () => import('../views/my'),
     meta: {
       title: '个人中心',
       icon: 'md-contact'

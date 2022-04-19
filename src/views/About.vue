@@ -25,6 +25,7 @@
 	</div>
 </template>
 
+
 <script>
 import useRequest from '@/mixins/useRequest'
 import { informList } from '@/api/good'
