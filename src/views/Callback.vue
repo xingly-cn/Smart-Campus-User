@@ -10,8 +10,9 @@
 						<Input
 							v-model="content"
 							type="textarea"
-							:autosize="{ minRows: 2, maxRows: 10 }"
+							:autosize="{ minRows: 10, maxRows: 10 }"
 							placeholder="您的宝贵意见"
+							height="500px"
 						></Input>
 					</div>
 

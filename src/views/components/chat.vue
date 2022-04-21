@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { send } from '@/api/msg'
 export default {
 	model: {
 		prop: 'value',
@@ -37,11 +38,18 @@ export default {
 	data() {
 		return {
 			message: '',
+			msg: {},
 		}
 	},
 	methods: {
 		handleSend() {
-			this.$Message.success(`我你爹${this.message}`)
+			this.msg.goodid = this.value.goodid
+			this.msg.stuid = this.value.id
+			this.msg.content = this.message
+			send(this.msg).then((res) => {
+				this.$Message.success(res.message)
+			})
+			this.message = ''
 		},
 	},
 }

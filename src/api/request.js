@@ -19,7 +19,6 @@ const service = axios.create({
 service.interceptors.request.use(config => {
     // 自定义header，可添加项目token
     config.headers.token = localStorage.getItem('token') || '';
-    config.headers.stuId = localStorage.getItem('stuId') || '4';
     return config;
 });
 // 返回拦截
@@ -33,8 +32,7 @@ service.interceptors.response.use((res)=>{
             switch (code) {
                 case 20001:
                     Message.success(result.message)
-                    console.log(router, '2');
-                    router.replace('/inform')
+                    router.replace('/')
                     break;
             }
         }

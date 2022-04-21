@@ -21,7 +21,7 @@ export const goofFind = (params) => service.request({
 export const addGood = (params) => service.request({
     url: '/lost/good/add', 
     method: "POST", 
-    params
+    data: params
 })
 
 export const delGoof = (params) => service.request({

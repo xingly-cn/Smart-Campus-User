@@ -54,6 +54,7 @@
 
 <script>
 import * as good from '@/api/good'
+import { getInfo2 } from '@/api/stu'
 import useRequest from '@/mixins/useRequest'
 import info from './components/info.vue'
 import chat from './components/chat.vue'
@@ -71,6 +72,7 @@ export default {
 				size: 10,
 				categoryId: '',
 				keyword: '',
+				f: '肖念昕',
 			},
 			list: [],
 			good: {
@@ -98,8 +100,11 @@ export default {
 		},
 		handleChat(item) {
 			this.com = 'chat'
-			console.log(item)
 			this.good.show = true
+			getInfo2(item.userId).then((res) => {
+				this.good.form = res.data.stu
+				this.good.form.goodid = item.id
+			})
 		},
 		handleCategory() {
 			good.getCategoryList().then((res) => {
